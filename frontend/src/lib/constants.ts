@@ -5,4 +5,11 @@ export const ROUTES = {
   REGISTER: '/register',
   DASHBOARD: '/dashboard',
   COMPANY_SELECT: '/company/select',
+  LEDGERS: '/masters/ledgers',
+  CUSTOMERS: '/masters/customers',
+  SUPPLIERS: '/masters/suppliers',
+  STOCK_ITEMS: '/masters/stock-items',
+  STOCK_GROUPS: '/masters/stock-groups',
+  UNITS: '/masters/units',
+  TAX_RATES: '/masters/tax-rates',
 } as const;

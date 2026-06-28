@@ -21,6 +21,10 @@ import { useTheme } from 'next-themes';
 import { toast } from 'sonner';
 import { AuthGuard } from '@/providers/auth-provider';
 import { CompanyProvider, CompanyGuard } from '@/providers/company-provider';
+import { KeyboardProvider } from '@/providers/keyboard-provider';
+import CommandPalette from '@/components/layout/command-palette';
+import HelpOverlay from '@/components/layout/help-overlay';
+import KeyboardDebugPanel from '@/components/layout/keyboard-debug-panel';
 import { useAuthStore } from '@/stores/auth.store';
 import { authService } from '@/services/auth.service';
 import { ROUTES } from '@/lib/constants';
@@ -222,16 +226,23 @@ export default function ErpLayout({
     <AuthGuard>
       <CompanyProvider>
         <CompanyGuard>
-          <div className="flex min-h-screen bg-background">
-            {/* Sidebar */}
-            <ErpSidebar />
+          <KeyboardProvider>
+            <div className="flex min-h-screen bg-background">
+              {/* Sidebar */}
+              <ErpSidebar />
 
-            {/* Main content viewport */}
-            <div className="flex-1 flex flex-col">
-              <ErpHeader />
-              <main className="flex-1 p-6 overflow-y-auto">{children}</main>
+              {/* Main content viewport */}
+              <div className="flex-1 flex flex-col">
+                <ErpHeader />
+                <main className="flex-1 p-6 overflow-y-auto">{children}</main>
+              </div>
             </div>
-          </div>
+
+            {/* Global keyboard UI triggers */}
+            <CommandPalette />
+            <HelpOverlay />
+            <KeyboardDebugPanel />
+          </KeyboardProvider>
         </CompanyGuard>
       </CompanyProvider>
     </AuthGuard>

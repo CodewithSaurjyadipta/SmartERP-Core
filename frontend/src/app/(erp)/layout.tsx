@@ -171,6 +171,7 @@ function ErpSidebar() {
               src="/logo.png"
               alt="Logo"
               fill
+              sizes="36px"
               className="object-cover scale-125"
             />
           </div>

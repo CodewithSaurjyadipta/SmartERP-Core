@@ -17,6 +17,7 @@ export default function AuthLayout({
             src="/portal-hero.png"
             alt="Dashboard Visual Background"
             fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover opacity-25"
             priority
           />

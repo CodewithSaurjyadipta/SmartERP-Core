@@ -1,5 +1,6 @@
 import { Knex } from 'knex';
 import path from 'path';
+import fs from 'fs';
 import { env } from './env';
 
 // ============================================================
@@ -7,6 +8,27 @@ import { env } from './env';
 // ============================================================
 
 const isSSL = env.DATABASE_URL.includes('sslmode=require');
+
+class CustomMigrationSource {
+  constructor(private directory: string) {}
+
+  async getMigrations() {
+    if (!fs.existsSync(this.directory)) return [];
+    return fs.readdirSync(this.directory)
+      .filter(file => file.endsWith('.ts') || file.endsWith('.js') || file.endsWith('.cjs'))
+      .sort();
+  }
+
+  getMigrationName(migration: string) {
+    return migration.replace(/\.ts$/, '.js');
+  }
+
+  getMigration(migration: string) {
+    return require(path.join(this.directory, migration));
+  }
+}
+
+const migrationsDir = path.join(__dirname, '../database/migrations');
 
 const sharedConfig: Knex.Config = {
   client: 'pg',
@@ -19,9 +41,8 @@ const sharedConfig: Knex.Config = {
     max: env.DATABASE_POOL_MAX,
   },
   migrations: {
-    directory: path.join(__dirname, '../database/migrations'),
+    migrationSource: new CustomMigrationSource(migrationsDir),
     tableName: 'knex_migrations',
-    extension: env.NODE_ENV === 'production' ? 'js' : 'ts',
   },
   seeds: {
     directory: path.join(__dirname, '../database/seeds'),

@@ -1,0 +1,14 @@
+SmartERP Local Font Setup
+=========================
+
+Place your local Runethia font files in this folder. 
+
+Supported formats:
+- Runethia.otf
+- Runethia.ttf
+- Runethia.woff
+- Runethia.woff2
+
+Once you copy the files here, they will automatically be loaded by the CSS @font-face declaration and rendered as the SmartERP logo font. 
+
+If no font files are present, the system will automatically fall back to the Satisfy cursive Google Font.

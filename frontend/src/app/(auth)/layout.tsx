@@ -34,16 +34,18 @@ export default function AuthLayout({
               alt="SmartERP Logo"
               width={80}
               height={80}
-              className="object-contain"
+              className="object-contain scale-125"
               priority
             />
           </div>
 
           {/* App name & Tagline */}
           <div className="space-y-3">
-            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Smart<span className="text-primary font-bold">ERP</span>
-            </h1>
+            <div className="inline-block bg-white/95 px-6 py-2.5 rounded-xl shadow-2xl border border-white/10 select-none">
+              <h1 className="text-3xl font-normal tracking-tight text-slate-800 sm:text-4xl font-logo">
+                Smart<span className="text-black font-logo">Erp</span>
+              </h1>
+            </div>
             <div className="mx-auto h-0.5 w-12 rounded-full bg-gradient-to-r from-primary to-indigo-500" />
             <p className="text-base font-light leading-relaxed text-slate-300">
               A high-end, keyboard-first cloud ERP system inspired by Tally. Complete with GST calculation, double-entry bookkeeping, and detailed financial statements.
@@ -64,8 +66,8 @@ export default function AuthLayout({
         </div>
 
         {/* Bottom attribution */}
-        <div className="absolute bottom-8 text-xs font-light text-slate-500 tracking-wider z-10">
-          © {new Date().getFullYear()} SmartERP. Seeding Double-Entry Integrity.
+        <div className="absolute bottom-8 text-xs font-light text-slate-500 tracking-wider z-10 font-logo">
+          © {new Date().getFullYear()} Smart<span className="font-logo">Erp</span>. Seeding Double-Entry Integrity.
         </div>
       </div>
 
@@ -79,12 +81,12 @@ export default function AuthLayout({
               alt="SmartERP Logo"
               width={60}
               height={60}
-              className="object-contain"
+              className="object-contain scale-125"
             />
           </div>
           <div className="text-center">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Smart<span className="text-primary">ERP</span>
+            <h1 className="text-2xl font-normal font-logo text-foreground select-none">
+              Smart<span className="text-black dark:text-black font-logo">Erp</span>
             </h1>
             <p className="text-xs text-muted-foreground">
               Cloud ERP for Modern Businesses

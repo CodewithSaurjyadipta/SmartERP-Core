@@ -21,11 +21,11 @@ const sharedConfig: Knex.Config = {
   migrations: {
     directory: path.join(__dirname, '../database/migrations'),
     tableName: 'knex_migrations',
-    extension: 'ts',
+    extension: env.NODE_ENV === 'production' ? 'js' : 'ts',
   },
   seeds: {
     directory: path.join(__dirname, '../database/seeds'),
-    extension: 'ts',
+    extension: env.NODE_ENV === 'production' ? 'js' : 'ts',
   },
 };
 

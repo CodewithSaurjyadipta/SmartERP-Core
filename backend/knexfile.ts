@@ -34,11 +34,11 @@ const knexConfig: Record<string, Knex.Config> = {
     migrations: {
       directory: './src/database/migrations',
       tableName: 'knex_migrations',
-      extension: 'ts',
+      extension: 'js',
     },
     seeds: {
       directory: './src/database/seeds',
-      extension: 'ts',
+      extension: 'js',
     },
   },
 };

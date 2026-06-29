@@ -98,6 +98,88 @@ export const GLOBAL_COMMANDS: CommandDefinition[] = [
     permissions: [],
     keywords: ['stock', 'items', 'products', 'inventory', 'warehouse']
   },
+  {
+    id: 'navigation.vouchers',
+    title: 'Go to Day Book',
+    description: 'Navigate to the transaction vouchers Day Book list',
+    category: 'Navigation',
+    defaultShortcut: 'Alt+Y',
+    contexts: ['global'],
+    permissions: [],
+    keywords: ['vouchers', 'transactions', 'day book', 'ledger entries', 'journal']
+  },
+  {
+    id: 'navigation.voucher-new',
+    title: 'Create Voucher',
+    description: 'Create a new accounting double-entry voucher',
+    category: 'Navigation',
+    defaultShortcut: 'Alt+N',
+    contexts: ['global'],
+    permissions: [],
+    keywords: ['new voucher', 'payment', 'receipt', 'journal', 'sales', 'contra']
+  },
+
+  // ── Voucher Operations (Context-Aware) ──────────────────────
+  {
+    id: 'voucher.switch.contra',
+    title: 'Contra Voucher',
+    description: 'Switch voucher type to Contra (Bank/Cash allocation)',
+    category: 'Voucher',
+    defaultShortcut: 'F4',
+    contexts: ['voucher:entry'],
+    permissions: [],
+    keywords: ['contra', 'switch', 'bank', 'cash', 'transfer', 'f4']
+  },
+  {
+    id: 'voucher.switch.payment',
+    title: 'Payment Voucher',
+    description: 'Switch voucher type to Payment (Cash/Bank source)',
+    category: 'Voucher',
+    defaultShortcut: 'F5',
+    contexts: ['voucher:entry'],
+    permissions: [],
+    keywords: ['payment', 'switch', 'payout', 'spend', 'f5']
+  },
+  {
+    id: 'voucher.switch.receipt',
+    title: 'Receipt Voucher',
+    description: 'Switch voucher type to Receipt (Cash/Bank destination)',
+    category: 'Voucher',
+    defaultShortcut: 'F6',
+    contexts: ['voucher:entry'],
+    permissions: [],
+    keywords: ['receipt', 'switch', 'receive', 'income', 'f6']
+  },
+  {
+    id: 'voucher.switch.journal',
+    title: 'Journal Voucher',
+    description: 'Switch voucher type to Journal (Adjustment entry)',
+    category: 'Voucher',
+    defaultShortcut: 'F7',
+    contexts: ['voucher:entry'],
+    permissions: [],
+    keywords: ['journal', 'switch', 'adjustment', 'offset', 'f7']
+  },
+  {
+    id: 'voucher.switch.sales',
+    title: 'Sales Voucher',
+    description: 'Switch voucher type to Sales (Outward billing)',
+    category: 'Voucher',
+    defaultShortcut: 'F8',
+    contexts: ['voucher:entry'],
+    permissions: [],
+    keywords: ['sales', 'switch', 'invoice', 'outward', 'bill', 'f8']
+  },
+  {
+    id: 'voucher.switch.purchase',
+    title: 'Purchase Voucher',
+    description: 'Switch voucher type to Purchase (Inward invoice)',
+    category: 'Voucher',
+    defaultShortcut: 'F9',
+    contexts: ['voucher:entry'],
+    permissions: [],
+    keywords: ['purchase', 'switch', 'inward', 'bill', 'expense', 'f9']
+  },
 
   // ── Context-Aware Actions ──────────────────────────────────
   {

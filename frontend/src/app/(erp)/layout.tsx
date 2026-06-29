@@ -15,7 +15,9 @@ import {
   FolderOpen, 
   Package,
   Sun,
-  Moon
+  Moon,
+  FileText,
+  PlusCircle
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { toast } from 'sonner';
@@ -150,6 +152,9 @@ function ErpSidebar() {
 
   const navItems = [
     { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+    { type: 'header', label: 'Transactions' },
+    { label: 'Day Book', href: '/vouchers', icon: FileText },
+    { label: 'New Voucher', href: '/vouchers/new', icon: PlusCircle },
     { type: 'header', label: 'Accounting Masters' },
     { label: 'Ledger Accounts', href: '/masters/ledgers', icon: BookOpen },
     { label: 'Customers', href: '/masters/customers', icon: Users },

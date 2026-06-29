@@ -17,6 +17,7 @@ import unitRoutes from './modules/unit/unit.routes';
 import taxRateRoutes from './modules/tax-rate/tax-rate.routes';
 import stockGroupRoutes from './modules/stock-group/stock-group.routes';
 import stockItemRoutes from './modules/stock-item/stock-item.routes';
+import voucherRoutes from './modules/voucher/voucher.routes';
 
 // ============================================================
 // Express Application Setup
@@ -48,6 +49,7 @@ app.use('/api/v1/units', unitRoutes);
 app.use('/api/v1/tax-rates', taxRateRoutes);
 app.use('/api/v1/stock-groups', stockGroupRoutes);
 app.use('/api/v1/stock-items', stockItemRoutes);
+app.use('/api/v1/vouchers', voucherRoutes);
 
 // ── Health Check ──────────────────────────────────────────
 app.get('/health', (_req, res) => {

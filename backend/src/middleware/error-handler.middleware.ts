@@ -32,6 +32,14 @@ export function errorHandler(
     return;
   }
 
+  // ── Database Unique Violations (Postgres code 23505) ────
+  if ((err as any).code === '23505') {
+    logger.warn('ErrorHandler', `Duplicate constraint violation: ${err.message}`);
+    const details = (err as any).detail; // e.g. "Key (company_id, name)=(..., stocks) already exists."
+    errorResponse(res, 409, 'CONFLICT', `A duplicate record already exists: ${details || err.message}`);
+    return;
+  }
+
   // ── Unknown / Unexpected Errors ────────────────────────
   logger.error('ErrorHandler', 'Unhandled error', {
     name: err.name,

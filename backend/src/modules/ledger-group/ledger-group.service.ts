@@ -1,4 +1,4 @@
-import { ledgerGroupRepository } from './ledger-group.repository';
+import { ledgerGroupRepository, mapRowToLedgerGroup } from './ledger-group.repository';
 import { LedgerGroup, LedgerGroupNode } from '@smarterp/shared';
 import { ApiError } from '../../utils/api-error';
 import { db } from '../../config/db';
@@ -39,10 +39,41 @@ export const ledgerGroupService = {
       sequenceOrder?: number;
     }
   ): Promise<LedgerGroup> {
-    // 1. Check duplicate name
-    const existing = await ledgerGroupRepository.findByName(companyId, data.name);
+    // 1. Check duplicate name including soft-deleted ones
+    const existing = await db('ledger_groups')
+      .where({ company_id: companyId })
+      .andWhereRaw('LOWER(name) = ?', [data.name.toLowerCase().trim()])
+      .first();
+
     if (existing) {
-      throw ApiError.conflict(`Ledger group with name "${data.name}" already exists`);
+      if (existing.deleted_at === null) {
+        throw ApiError.conflict(`Ledger group with name "${data.name}" already exists`);
+      }
+
+      // 2. Validate parent group if provided
+      if (data.parentId) {
+        const parent = await ledgerGroupRepository.findById(companyId, data.parentId);
+        if (!parent) {
+          throw ApiError.badRequest('Parent ledger group not found');
+        }
+      }
+
+      // Self-heal restore soft-deleted group
+      const [restored] = await db('ledger_groups')
+        .where({ id: existing.id })
+        .update({
+          deleted_at: null,
+          parent_id: data.parentId || null,
+          nature: data.nature,
+          is_active: true,
+          affects_gp: data.affectsGp ?? false,
+          sequence_order: data.sequenceOrder ?? 100,
+          updated_by: userId,
+          updated_at: new Date(),
+        })
+        .returning('*');
+
+      return mapRowToLedgerGroup(restored);
     }
 
     // 2. Validate parent group if provided

@@ -6,7 +6,8 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --require dotenv/config src/server.ts",
-    "build": "tsc",
+    "prebuild": "npm run build --workspace=shared || (cd ../shared && npm run build)",
+    "build": "rm -rf dist && tsc",
     "start": "node dist/server.js",
     "migrate": "knex --knexfile knexfile.ts migrate:latest",
     "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback",
@@ -27,7 +28,7 @@
     "morgan": "^1.10.0",
     "pdfkit": "^0.19.1",
     "pg": "^8.13.0",
-    "zod": "^3.24.0"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

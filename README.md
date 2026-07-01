@@ -10,7 +10,7 @@ A production-quality, Tally-inspired cloud ERP system for Indian businesses.
 
 | Layer | Technology Badges |
 |---|---|
-| **Frontend** | ![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=nextdotjs&logoColor=white) ![React](https://img.shields.io/badge/React-19-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007ACC?style=flat-square&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) |
+| **Frontend** | ![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=nextdotjs&logoColor=white) ![React](https://img.shields.io/badge/React-19-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007ACC?style=flat-square&logo=typescript&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) |
 | **Backend** | ![Express.js](https://img.shields.io/badge/Express.js-4.x-000000?style=flat-square&logo=express&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?style=flat-square&logo=node.js&logoColor=white) ![Knex.js](https://img.shields.io/badge/Knex.js-3.x-E16422?style=flat-square&logo=knex&logoColor=white) |
 | **Database** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-316192?style=flat-square&logo=postgresql&logoColor=white) |
 | **Auth** | ![JWT](https://img.shields.io/badge/JWT-Access%20%2B%20Refresh-000000?style=flat-square&logo=json-web-tokens&logoColor=white) |
@@ -20,7 +20,7 @@ A production-quality, Tally-inspired cloud ERP system for Indian businesses.
 ```
 SmartERP/
 ├── backend/          # Express.js API server
-├── frontend/         # Next.js 15 application
+├── frontend/         # Next.js 16 application
 ├── shared/           # Shared TypeScript types & Zod schemas
 ├── package.json      # npm workspaces root
 └── .env.example      # Environment variable template

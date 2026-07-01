@@ -142,14 +142,27 @@ Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
 | `PUT`  | `/api/v1/stock-items/:id` | Update stock item profile | Yes |
 | `DELETE` | `/api/v1/stock-items/:id` | Delete stock item profile | Yes |
 
+### Transaction Engine (Accounting Vouchers) & Invoices
+| Method | Endpoint | Description | Auth Required |
+|:---|:---|:---|:---|
+| `GET`  | `/api/v1/vouchers` | Retrieve filtered list of vouchers (Day Book) | Yes |
+| `GET`  | `/api/v1/vouchers/:id` | Retrieve complete voucher details (entries & stock list) | Yes |
+| `POST` | `/api/v1/vouchers` | Post a new voucher (or save as Draft) | Yes |
+| `POST` | `/api/v1/vouchers/:id/post` | Post a draft voucher | Yes |
+| `POST` | `/api/v1/vouchers/:id/cancel` | Cancel a posted voucher (keeps history, zeros figures) | Yes |
+| `POST` | `/api/v1/vouchers/:id/reverse` | Reverse a voucher (creates opposite counter-entry) | Yes |
+| `GET`  | `/api/v1/vouchers/:id/audit` | Retrieve full cryptographic audit trail trail log | Yes |
+| `GET`  | `/api/v1/vouchers/:id/invoice` | Expose compiled Invoice DTO metadata | Yes |
+| `GET`  | `/api/v1/vouchers/:id/pdf` | Stream raw binary Tax Invoice PDF | Yes |
+
 ## Development Roadmap
 
 - [x] **Phase 1**: Architecture & Design
 - [x] **Phase 2**: Project Setup & Authentication
 - [x] **Phase 3**: Company Management & Seeding
 - [x] **Phase 4**: Master Data
-- [ ] **Phase 5**: Transaction Engine
-- [ ] **Phase 6**: GST & Invoice PDF Generation
+- [x] **Phase 5**: Transaction Engine (Accounting Vouchers & Audits)
+- [x] **Phase 6**: GST & Invoice PDF Generation (Watermarks & Printing)
 - [ ] **Phase 7**: Financial & Inventory Reports
 - [ ] **Phase 8**: Keyboard-First Navigation Workflow
 - [ ] **Phase 9**: Test Coverage & Hardening
